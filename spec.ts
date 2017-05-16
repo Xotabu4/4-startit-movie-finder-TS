@@ -1,8 +1,7 @@
 import {browser, element, By} from 'protractor'
-//expect as any
 
 describe('Test', function () {
-    it('First test', function () {
+    it('1 test', function () {
         const URL = 'https://movies-finder.firebaseapp.com/'
 
         browser.get(URL)
@@ -11,7 +10,7 @@ describe('Test', function () {
         expect(browser.getTitle()).toEqual('Movies Finder')
     })
 
-    it('Second test', function () {
+    it('2 test', function () {
         let locator = By.css('input.form-control')
         let searchField = element(locator)
 
@@ -24,7 +23,7 @@ describe('Test', function () {
         expect(searchField.isDisplayed()).toBeTruthy()
     })
 
-    it('Second test', function () {
+    it('3 test', function () {
         let locator = By.css('input.form-control')
         let searchField = element(locator)
 
@@ -36,7 +35,7 @@ describe('Test', function () {
         expect(searchField.getAttribute('placeholder')).toEqual('Search for movies...')
     })
 
-    it('Second test', function () {
+    it('4 test', function () {
         let locator = By.css('input.form-control')
         let searchField = element(locator)
 
