@@ -1,17 +1,11 @@
+// Docs: https://jasmine.github.io/edge/introduction
 
-
-console.log('########')
-describe('1: ', function () {
-    console.log('inside describe')
-
+// Describe is like a test suite, but describes test for one feature
+describe('Search should be', function () {
     beforeAll(function () {
         console.log('BEFORE ALL!')
     })
 
-    beforeEach(function () {
-        console.log('BEFORE EACH!')
-    })
-    
     beforeEach(function () {
         console.log('BEFORE EACH!')
     })
@@ -24,40 +18,32 @@ describe('1: ', function () {
         console.log('AFTER ALL!')
     })
 
-    describe('INVALID ', function () {
-        if (true) {
-            beforeEach(function () {
-                console.log('invalid before each')
-            })
-        }
-        let condition = false
-        if (condition) {
-            beforeEach(function () {
-                console.log('invalid before each')
-            })
-        }
+    // Nested describes allowed!
+    describe('unsucessful', function () {
 
-
-        it('3', function () {
-            console.log('Test 3 !')
+        it('when invalid movie name used', function () {
+            console.log('passed!')
         })
 
     })
 
-    let mytest = function () {
-        console.log('Test 1 !')
-    }
+    it('successful when valid movie name used', function () {
+        console.log('passed!')
 
-    let myTestName = '1'
-
-    it(myTestName, mytest)
-
-    it('2', function () {
-        console.log('Test 2 !')
-
-        let myText = 'Some text'
-        expect(true).toBeTruthy(`My nice element should ${myText}`)
+        expect(true).toBeTruthy(`This is error message, that will be thrown if assertion fail`)
     })
 
-    console.log('inside describe, after declaring it')
+
+    xdescribe('xdescribe - to mark block as SKIPPED', function () {
+        it('this will not be executed', function () {
+            console.log('you should never see this message in console!')
+        })
+    })
+
+    xit('xit - is to mark "it" block as SKIPPED', function () {
+        console.log('you should never see this message in console!')
+    })
 })
+
+// fdescribe - to focus specific suite - only this suite will be executed
+// fit - to focus specific it block - only this it block will be executed
