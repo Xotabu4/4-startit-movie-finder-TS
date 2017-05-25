@@ -1,7 +1,7 @@
 import { browser, element, By, $ } from 'protractor'
+import { SearchPage } from '../pageObjects/searchPage'
 
 describe('Test', function () {
-
 
     it('1 test', function () {
         const URL = 'https://movies-finder.firebaseapp.com/'
@@ -37,19 +37,17 @@ describe('Test', function () {
         expect(searchField.getAttribute('placeholder')).toEqual('Search for movies...')
     })
 
-    it('4 test', function () {
-        let locator = By.css('input.form-control')
-        let searchField = element(locator)
+    fit('4 test', function () {
+        let searchPage = new SearchPage()
+        searchPage.open()
+        searchPage.search('Matrix')
+        browser.sleep(5000)
+        
+        expect(searchPage.searchResults.count()).not.toBe(0, 'Search results should not be empty')
+        
+        let firstSearchRes = searchPage.searchResults.first()
 
-        const URL = 'https://movies-finder.firebaseapp.com/'
-
-        browser.get(URL)
-        browser.sleep(3000)
-
-        searchField.sendKeys('HELLO WORLD')
-        browser.sleep(10000)
-        element(By.css('span.input-group-btn button.btn.btn-primary')).click()
-        browser.sleep(10000)
+        expect(firstSearchRes.getText()).toContain('Matrix', 'Search results should not be empty')
     })
 
 })
@@ -69,8 +67,7 @@ describe('Selectors', function () {
     */
 
     it('by buttonText', function () {
-        browser.get('')
-
+        browser.get('')        
         expect(element(By.buttonText('Go!')).isDisplayed()).toBeTruthy()
     })
 
