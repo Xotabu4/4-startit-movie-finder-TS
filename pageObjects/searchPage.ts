@@ -20,4 +20,7 @@ export class SearchPage extends BasePage {
         this.searchField.submit()
     }
 
+    getSearchFieldPlaceHolder() {
+        return this.searchField.getAttribute('placeholder')
+    }
 }
